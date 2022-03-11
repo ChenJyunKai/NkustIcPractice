@@ -1,3 +1,3 @@
 # NkustIcPractice
 
-實習小組\_練習 hi
+實習小組\_練習 Hi iH
