@@ -2,4 +2,4 @@
 
 實習小組\_練習
 
-chong +
+chong test
