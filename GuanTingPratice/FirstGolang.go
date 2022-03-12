@@ -3,13 +3,20 @@ import (
 	"fmt" 
 	"strings"
 	"strconv"
+	"bufio"
+	"os"
 ) 
 
 func main() {
-	fmt.Println(equationprocessing("2*3-2/2*5"))
+	var equation string 
+	fmt.Println("Please enter your equation")
+	Reader := bufio.NewReader(os.Stdin)
+	equation,_ = Reader.ReadString('\n');equation = strings.TrimSpace(equation)
+	fmt.Println("The answer to this equation is：",equationprocessing(equation))
 }  
 
 func equationprocessing(equation string) int{
+	equation = strings.Replace(equation," ","", -1)
 	equation = strings.Replace(equation,"+"," + ", -1)
 	equation = strings.Replace(equation,"-"," - ", -1)
 	equation = strings.Replace(equation,"*"," * ", -1)
@@ -29,7 +36,7 @@ func Addsub(sum int,equation []string) int{
 	for i = 0; i < len(equation); i += 2{
 		preadd, err = strconv.Atoi(equation[i])
 		if err != nil {
-			fmt.Printf(err.Error())
+			fmt.Println(err.Error())
 		}
 		if i == 0 {
 			sum = preadd
@@ -54,7 +61,7 @@ func muldiv(equation []string) string{
 		x, err = strconv.Atoi(equation[i-1])
 		y, err = strconv.Atoi(equation[i+1])
 		if err != nil {
-			fmt.Printf(err.Error())
+			fmt.Println(err.Error())
 		}
 		if equation[i] == "*"{
 			n = x * y
