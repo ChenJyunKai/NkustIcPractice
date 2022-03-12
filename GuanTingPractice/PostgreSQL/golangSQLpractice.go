@@ -12,19 +12,19 @@ func main() {
     checkErr(err)
 
 	//---------------------DB SELECT--------------------------
-	// rows, err := db.Query("SELECT * FROM company")
-    // checkErr(err)
-	// for rows.Next() {
-    //     var empid int
-    //     var empname string
-    //     var brithday string
-    //     err = rows.Scan(&empid, &empname, &brithday)
-    //     checkErr(err)
+	rows, err := db.Query("SELECT * FROM company")
+    checkErr(err)
+	for rows.Next() { //foreach
+        var empid int
+        var empname string
+        var brithday string
+        err = rows.Scan(&empid, &empname, &brithday) //get data and check err
+        checkErr(err)
 
-    //     fmt.Println(empid)
-    //     fmt.Println(empname)
-    //     fmt.Println(brithday)
-    // } 
+        fmt.Println(empid)
+        fmt.Println(empname)
+        fmt.Println(brithday)
+    } 
 
 	//---------------------DB ADD--------------------------
 	// stmt, err := db.Prepare("INSERT INTO company(empname,brithday) VALUES($1,$2)")
@@ -46,14 +46,14 @@ func main() {
     // fmt.Println(affect)
 
 	//---------------------DB DELETE--------------------------
-	stmt, err :=db.Prepare("delete from company where empid=$1")
-	checkErr(err)
-	res, err := stmt.Exec(4)
-	checkErr(err)
-	affect, err := res.RowsAffected()
-    checkErr(err)
+	// stmt, err :=db.Prepare("delete from company where empid=$1")
+	// checkErr(err)
+	// res, err := stmt.Exec(4)
+	// checkErr(err)
+	// affect, err := res.RowsAffected()
+    // checkErr(err)
 
-    fmt.Println(affect)
+    // fmt.Println(affect)
 
     db.Close()
 }
