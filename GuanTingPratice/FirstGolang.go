@@ -25,13 +25,12 @@ func equationprocessing(equation string) int{
 	if strings.ContainsRune(equation, '*') ||  strings.ContainsRune(equation, '/') {
 		splitarray = strings.Split(muldiv(splitarray)," ") 
 	}
-	var sum int = 0
-	return Addsub(sum,splitarray)
+	return Addsub(splitarray)
 }
 
-func Addsub(sum int,equation []string) int{
+func Addsub(equation []string) int{
 	var i int
-	var preadd int
+	var sum,preadd int
 	var err error
 	for i = 0; i < len(equation); i += 2{
 		preadd, err = strconv.Atoi(equation[i])
