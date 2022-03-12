@@ -9,13 +9,14 @@ func main(){
 		c.JSON(200,gin.H{
 			"message":"Hello",
 		})
+	}) 
+
+	router.POST("./ping/:id",func(c*gin.Context){
+		id := c.Param("id")
+		c.JSON(200,gin.H{
+			"id":id,
+		})
 	})
-	// router.POST("./ping/:id",func(c*gin.Context){
-	// 	id := c.Param("id")
-	// 	c.JSON(200,gin.H{
-	// 		"id":id,
-	// 	})
-	// })
 
 	router.POST("./ping",func(c*gin.Context){
 		id := c.Query("id")
@@ -31,5 +32,6 @@ func main(){
 			"message":string(x),
 		})
 	})
+	
 	router.Run()
 }  
