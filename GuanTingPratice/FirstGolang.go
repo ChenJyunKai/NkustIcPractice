@@ -3,11 +3,11 @@ import (
 	"fmt" 
 	"strings"
 	"strconv"
-)
+) 
 
 func main() {
 	fmt.Println(equationprocessing("2*3-2/2*5"))
-} 
+}  
 
 func equationprocessing(equation string) int{
 	equation = strings.Replace(equation,"+"," + ", -1)
