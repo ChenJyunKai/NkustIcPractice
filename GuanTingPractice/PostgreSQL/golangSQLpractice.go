@@ -21,9 +21,7 @@ func main() {
         err = rows.Scan(&empid, &empname, &brithday) //get data and check err
         checkErr(err)
 
-        fmt.Println(empid)
-        fmt.Println(empname)
-        fmt.Println(brithday)
+        fmt.Println(empid,empname,brithday)
     } 
 
 	//---------------------DB ADD--------------------------
