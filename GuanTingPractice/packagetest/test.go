@@ -1,6 +1,6 @@
 package main
 
-import test "mypkg"
+import test "github.com/GuanTingFan/mypackage/mypkg"
 
 func main (){
 	test.PrintHi()
