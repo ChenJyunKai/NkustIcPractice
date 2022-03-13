@@ -7,6 +7,12 @@ import (
     _ "github.com/lib/pq"
 )
 
+type Employee struct {
+	empid int
+	empname string
+	brithday string
+}
+
 func main() {
 	db, err := sql.Open("postgres", "user=postgres password=17787 dbname=test sslmode=disable")
     checkErr(err)
@@ -14,16 +20,14 @@ func main() {
 	//---------------------DB SELECT--------------------------
 	rows, err := db.Query("SELECT * FROM company")
     checkErr(err)
+    var employees []Employee
 	for rows.Next() { //foreach
-        var empid int
-        var empname string
-        var brithday string
-        err = rows.Scan(&empid, &empname, &brithday) //get data and check err
+        employee := Employee{}
+		err = rows.Scan(&employee.empid, &employee.empname, &employee.brithday) //get data and check err //get data and check err
         checkErr(err)
-
-        fmt.Println(empid,empname,brithday)
+        employees = append(employees, employee) 
     } 
-
+    fmt.Println(employees)
 	//---------------------DB ADD--------------------------
 	// stmt, err := db.Prepare("INSERT INTO company(empname,brithday) VALUES($1,$2)")
     // checkErr(err)
