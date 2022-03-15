@@ -7,13 +7,16 @@ import { AppComponent } from './app.component';
 import { HamastarsComponent } from './hamastars/hamastars.component';
 
 import { HamastarDetailComponent } from './hamastar-detail/hamastar-detail.component';
+import { MessagesComponent } from './messages/messages.component';
+import { DashboardComponent } from './dashboard/dashboard.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     HamastarsComponent,
-
-    HamastarDetailComponent
+    HamastarDetailComponent,
+    MessagesComponent,
+    DashboardComponent
   ],
   imports: [
     BrowserModule,
