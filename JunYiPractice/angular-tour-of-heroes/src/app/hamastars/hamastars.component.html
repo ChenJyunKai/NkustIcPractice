@@ -1,0 +1,16 @@
+<h2>My Stars</h2>
+<ul class="hamastars">
+    <li *ngFor="let hamastar of hamastars" (click)="OnSelect(hamastar)">
+      <span class="badge">{{hamastar.id}}</span> {{hamastar.name}}
+    </li>
+  </ul>
+  <div *ngIf="selectedHamastar">
+
+    <h2>{{selectedHamastar.name}} Details</h2>
+    <div><span>id: </span>{{selectedHamastar.id}}</div>
+    <div>
+      <label for="hamastar-name">Hero name: </label>
+      <input id="hamastar-name" [(ngModel)]="selectedHamastar.name" placeholder="name">
+    </div>
+  
+  </div>
