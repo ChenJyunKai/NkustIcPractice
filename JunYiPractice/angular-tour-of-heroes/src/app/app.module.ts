@@ -6,10 +6,14 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { HamastarsComponent } from './hamastars/hamastars.component';
 
+import { HamastarDetailComponent } from './hamastar-detail/hamastar-detail.component';
+
 @NgModule({
   declarations: [
     AppComponent,
-    HamastarsComponent
+    HamastarsComponent,
+
+    HamastarDetailComponent
   ],
   imports: [
     BrowserModule,
