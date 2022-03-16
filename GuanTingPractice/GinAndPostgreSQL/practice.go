@@ -9,7 +9,7 @@ import (
 )
 //Lowercase will not be converted to JSON
 type Employee struct {
-	Empid int `json:"empid"`
+	Empid int `json:"empid"` 
 	Empname string `json:"empname"`
 	Brithday string `json:"brithday"`
 }
