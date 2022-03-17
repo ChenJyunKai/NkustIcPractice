@@ -4,14 +4,16 @@ import(
 	"fmt"
 	"database/sql"
 	"github.com/gin-gonic/gin"
+	"github.com/gin-contrib/cors"
 	"net/http"
 	_ "github.com/lib/pq"
+	_ "strconv"
 )
 
 type Student struct{
-	id int
-	name string
-	age int
+	Id int `json "id"`
+	Name string `json "name"`
+	Age int `json "age"`
 }
 
 func main(){
@@ -29,16 +31,23 @@ func main(){
 	}
 
 	server := gin.Default()
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowAllOrigins = true
+	server.Use(CORSMiddleware())
 	server.LoadHTMLGlob("template/*")
 
 	api := server.Group("api")
 	{
-		api.GET("/", func(c *gin.Context){
+		api.GET("/select", func(c *gin.Context){
 			students := selectstudent(db)
-			c.HTML(http.StatusOK,"index.html",gin.H{
+			c.JSON(http.StatusOK,gin.H{
 				"students" : students,
 			})
 		})
+
+		// api.POST("/insert",func(c *gin.Context){
+		// 	id,_:= strconv.
+		// })
 	}
 	server.Run()
 }
@@ -53,8 +62,24 @@ func selectstudent(db *sql.DB)(students []Student){
 	defer rows.Close()
 	for rows.Next(){
 		student := Student{}
-		err = rows.Scan(&student.id ,&student.name ,&student.age)
+		err = rows.Scan(&student.Id ,&student.Name ,&student.Age)
 		students = append(students, student)
 	}
 	return
+}
+
+func CORSMiddleware() gin.HandlerFunc {
+    return func(c *gin.Context) {
+        c.Writer.Header().Set("Access-Control-Allow-Origin", "*")
+        c.Writer.Header().Set("Access-Control-Allow-Credentials", "true")
+        c.Writer.Header().Set("Access-Control-Allow-Headers", "Content-Type, Content-Length, Accept-Encoding, X-CSRF-Token, Authorization, accept, origin, Cache-Control, X-Requested-With")
+        c.Writer.Header().Set("Access-Control-Allow-Methods", "POST, OPTIONS, GET, PUT")
+
+        if c.Request.Method == "OPTIONS" {
+            c.AbortWithStatus(204)
+            return
+        }
+
+        c.Next()
+    }
 }

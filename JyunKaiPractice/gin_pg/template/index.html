@@ -3,7 +3,12 @@
     <meta charset="UTF-8">
     <title>Select</title>
 <body>
-    <h1>查詢畫面</h1>
+    <form METHOD="GET" ACTION="/api/select">
+        <button type="submit" class="btnSubmit">查詢</button>
+    </form>
+    <form METHOD="POST" ACTION="/api/insert">
+        <button type="submit" class="btnSubmit">新增</button>
+    </form>
     {{range .students}}
     <p>{{.}}</p>
     {{end}}
