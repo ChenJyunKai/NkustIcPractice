@@ -1,6 +1,6 @@
-import { Hero } from './hero';
+import { Hamastar } from './hamastar';
 
-export const HEROES: Hero[] = [
+export const HAMASTARS: Hamastar[] = [
   { id: 11, name: 'Dr Nice' },
   { id: 12, name: 'Narco' },
   { id: 13, name: 'Bombasto' },
@@ -12,10 +12,3 @@ export const HEROES: Hero[] = [
   { id: 19, name: 'Magma' },
   { id: 20, name: 'Tornado' }
 ];
-
-
-/*
-Copyright Google LLC. All Rights Reserved.
-Use of this source code is governed by an MIT-style license that
-can be found in the LICENSE file at https://angular.io/license
-*/
