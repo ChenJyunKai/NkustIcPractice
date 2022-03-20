@@ -27,7 +27,7 @@ export class HamastarDetailComponent implements OnInit {
     this.hamaService.getHamastar(id)
       .subscribe(hamastar => this.hamastar=hamastar)
   }
-  goBack(): void {
+  goBack(): void {  
     this.location.back();
   }
   
