@@ -5,10 +5,11 @@ import (
 	"database/sql"
     "fmt"
     _ "github.com/lib/pq"
+	"github.com/gin-contrib/cors"
 )
 //Lowercase will not be converted to JSON
 type Employee struct {
-	Empid int `json:"empid"`
+	Empid int `json:"empid"` 
 	Empname string `json:"empname"`
 	Brithday string `json:"brithday"`
 }
@@ -17,8 +18,10 @@ func main(){
 	db, err := sql.Open("postgres", "user=postgres password=17787 dbname=test sslmode=disable")
 	checkErr(err)
 	defer db.Close()
-
+	corsConfig := cors.DefaultConfig()
+	corsConfig.AllowAllOrigins = true
 	router := gin.Default()
+	router.Use(cors.New(corsConfig))
 	company := router.Group("/company")
 	{
 		company.GET("/select",func(c *gin.Context){
@@ -29,9 +32,9 @@ func main(){
 			})
 		})
 		company.POST("/insert",func(c *gin.Context){
-			empname := c.PostForm("empname")
-			brithday := c.PostForm("brithday")
-			employee :=  Employee{0,empname,brithday}
+			json := Employee{}
+			c.BindJSON(&json)
+			employee :=  Employee{0,json.Empname,json.Brithday}
 			insertemployee(db, employee)
 			c.JSON(200, gin.H{
 				"message":"新增成功",

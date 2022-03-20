@@ -1,0 +1,14 @@
+<mat-toolbar>
+    <button mat-icon-button class="example-icon" aria-label="Example icon-button with menu icon">
+        <mat-icon>menu</mat-icon>
+      </button>
+    <span>My App</span>
+</mat-toolbar>
+<h1>{{title}}</h1>
+<nav>
+    <a routerLink="/dashboard">Dashboard</a>
+    <a routerLink="/heroes">Heroes</a>
+    <!--herf會重新加載頁面,routerLink並不會-->
+</nav>
+<router-outlet></router-outlet>
+<app-messages></app-messages>
