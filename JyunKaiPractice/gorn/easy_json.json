@@ -1,0 +1,5 @@
+{
+    "server_name": "ServerName",
+    "server_ip": "ServerIP",
+    "server_port": 5432
+}

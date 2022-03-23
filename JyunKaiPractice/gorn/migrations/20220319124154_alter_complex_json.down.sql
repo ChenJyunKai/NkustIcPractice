@@ -1,0 +1,1 @@
+ALTER TABLE practices drop column complex_json;

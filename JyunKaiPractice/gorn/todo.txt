@@ -1,0 +1,23 @@
+練習對accounts資料表CRUD，並正確撰寫測試
+※ migrate -database postgres://postgres:usa960092@127.0.0.1:5432/postgres?sslmode=disable -path ./migrations up
+可針對accounts表中的內容CRUD。
+
+
+
+備案:
+需求表: 創立一張表名為practices
+欄位:str_field; 格式:字串
+欄位:int_field; 格式:數字
+欄位:uuid4_field; 格式:uuid
+欄位:is_bool; 格式:布林
+欄位:time_field; 格式:2022-03-14 17:18:10
+欄位:date_field; 格式:2022-03-14
+欄位:easy_json; 格式:json
+※ migrate create -ext sql -dir ./migrations create_xxx
+
+增加一個欄位:complex_json; 格式:json
+※ migrate create -ext sql -dir ./migrations alter_xxx
+
+設計一個符合「兄弟倆食堂」菜單的json，並正確存入practices表中的complex_json欄位。
+修改菜單
+
